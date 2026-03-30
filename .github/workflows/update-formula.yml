@@ -1,0 +1,77 @@
+name: Update Formula
+
+on:
+  repository_dispatch:
+    types: [update-formula]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. 0.2.0)"
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set version
+        run: |
+          VERSION="${{ github.event.client_payload.version || github.event.inputs.version }}"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Download and hash
+        run: |
+          BASE="https://github.com/LeonTing1010/tap/releases/download/v${VERSION}"
+          for target in aarch64-apple-darwin x86_64-apple-darwin x86_64-unknown-linux-gnu; do
+            curl -sL "$BASE/tap-${target}.tar.gz" -o "tap-${target}.tar.gz"
+            SHA=$(sha256sum "tap-${target}.tar.gz" | cut -d' ' -f1)
+            echo "SHA_${target//-/_}=$SHA" >> $GITHUB_ENV
+          done
+
+      - name: Update formula
+        run: |
+          cat > Formula/tap.rb << 'RUBY'
+          class Tap < Formula
+            desc "The interface protocol for AI agents - forge once, run forever"
+            homepage "https://github.com/LeonTing1010/tap"
+            license "MIT"
+          RUBY
+
+          cat >> Formula/tap.rb << EOF
+            version "$VERSION"
+
+            on_macos do
+              if Hardware::CPU.arm?
+                url "https://github.com/LeonTing1010/tap/releases/download/v${VERSION}/tap-aarch64-apple-darwin.tar.gz"
+                sha256 "$SHA_aarch64_apple_darwin"
+              else
+                url "https://github.com/LeonTing1010/tap/releases/download/v${VERSION}/tap-x86_64-apple-darwin.tar.gz"
+                sha256 "$SHA_x86_64_apple_darwin"
+              end
+            end
+
+            on_linux do
+              url "https://github.com/LeonTing1010/tap/releases/download/v${VERSION}/tap-x86_64-unknown-linux-gnu.tar.gz"
+              sha256 "$SHA_x86_64_unknown_linux_gnu"
+            end
+
+            def install
+              bin.install "tap"
+            end
+
+            test do
+              assert_match "tap", shell_output("#{bin}/tap --help 2>&1", 1)
+            end
+          end
+          EOF
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/tap.rb
+          git commit -m "Update tap to v${VERSION}"
+          git push
