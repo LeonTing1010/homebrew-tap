@@ -3,6 +3,13 @@ class Taprun < Formula
   homepage "https://taprun.dev"
   version "0.15.4"
   license :cannot_represent
+  # `brew install LeonTing1010/tap/tap` (the original install command in
+  # docs / blog posts / user terminals) must continue to resolve. Per
+  # ADR `2026-05-09-userspace-via-standards.md` Tier 0: install command
+  # strings frozen by user keystroke; rename = userspace break unless
+  # the old name keeps resolving. Homebrew's `oldname` is the idiomatic
+  # alias mechanism. Replaces the v0.4.0 orphan Formula/tap.rb.
+  oldname "tap"
 
   on_macos do
     if Hardware::CPU.arm?
