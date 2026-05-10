@@ -1,3 +1,6 @@
+# Auto-bumped by tap-core release.yml `homebrew-update` job (release-bot@taprun.dev).
+# Do not edit by hand — manual edits will be overwritten on next release.
+# Drift-checked by public/scripts/lint-cli-drift.ts (cross-repo: cli.yml ↔ this version line).
 class Taprun < Formula
   desc "Interface automation runtime — programs beat prompts"
   homepage "https://taprun.dev"
