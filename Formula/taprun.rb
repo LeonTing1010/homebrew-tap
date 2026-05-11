@@ -10,9 +10,9 @@ class Taprun < Formula
   # docs / blog posts / user terminals) must continue to resolve. Per
   # ADR `2026-05-09-userspace-via-standards.md` Tier 0: install command
   # strings frozen by user keystroke; rename = userspace break unless
-  # the old name keeps resolving. Homebrew's `oldname` is the idiomatic
+  # the old name keeps resolving. Homebrew's `oldnames` is the idiomatic
   # alias mechanism. Replaces the v0.4.0 orphan Formula/tap.rb.
-  oldname "tap"
+  oldnames "tap"
 
   on_macos do
     if Hardware::CPU.arm?
