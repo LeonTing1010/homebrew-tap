@@ -19,10 +19,10 @@ class Taprun < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/LeonTing1010/tap/releases/download/v0.17.0/tap-macos-arm64"
-      sha256 "b80aab77ceeeac2e9cf3bf9120c8bdae925f414114726f7abad3dd86c5b718a7"
+      sha256 "3f11ed82e75289b4c7dd07a930d9085d8641e0aa806ff1d0fc704bf0b66cdba0"
     else
       url "https://github.com/LeonTing1010/tap/releases/download/v0.17.0/tap-macos-x64"
-      sha256 "416f4dc414cf2af6393628dc9fb3bf83b580d38b991d149125559e11c2fbe4dc"
+      sha256 "3b073ffe40ea4d1b2ceac53cef534a8e12593a58a6f85dd4e8f7452e2b89e0ae"
     end
   end
 
@@ -31,7 +31,7 @@ class Taprun < Formula
       odie "Tap does not support Linux ARM yet"
     else
       url "https://github.com/LeonTing1010/tap/releases/download/v0.17.0/tap-linux-x64"
-      sha256 "410f09615e2e8ffa5cdc0c3026f2c54b45cb16f55888c3effb0f8bb1f218b08b"
+      sha256 "f63b2024ec9857f8e11a930592373c6d6220601c7638777908312f5d1169d3a8"
     end
   end
 
