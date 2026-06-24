@@ -19,20 +19,20 @@ class Taprun < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-macos-arm64"
-      sha256 "7d0f8d4ae02ed2d3b2aa056384d88c174b8a290bef2440bde4ca7be8aad5b64a"
+      sha256 "f655893aa36d9652e5512e867f6452f4593fc5446924b1ce7067789c22b5d625"
     else
       url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-macos-x64"
-      sha256 "0b169869b912484deae51327aec4e7a1841d32ac2f394892ffc41432856d4742"
+      sha256 "69d64f17822b59550af23ac8d95fca50af697509bf7d8aeaa333b6b9e8e69b67"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-linux-arm64"
-      sha256 "61704fa4de5c5a2ea4379e1c4465ccbee1c30ff1f111dc2752e62d9a0721efee"
+      sha256 "b1284d5361bf6e79380d30660bb4e955df100119c16e572ffad52f3b6eb3c7d8"
     else
       url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-linux-x64"
-      sha256 "20636059b6ecf3190fbf59db2320d9903da78dc27c344223b9573f48c8b07dac"
+      sha256 "fc8db09bf180157127ecf20fb6732a1d485f21a370a7f39bce5986d931e31b7b"
     end
   end
 
