@@ -4,7 +4,7 @@
 class Taprun < Formula
   desc "Interface automation runtime — programs beat prompts"
   homepage "https://taprun.dev"
-  version "0.18.0"
+  version "0.20.0"
   license :cannot_represent
   # `brew install LeonTing1010/tap/tap` (the original install command in
   # docs / blog posts / user terminals) must continue to resolve. Per
@@ -18,21 +18,21 @@ class Taprun < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/LeonTing1010/tap/releases/download/v0.18.0/tap-macos-arm64"
-      sha256 "6f929b7a5b31ddbded8c94920ebe8ac788ee73c9ccba10ef8e0dd488a190942d"
+      url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-macos-arm64"
+      sha256 "7d0f8d4ae02ed2d3b2aa056384d88c174b8a290bef2440bde4ca7be8aad5b64a"
     else
-      url "https://github.com/LeonTing1010/tap/releases/download/v0.18.0/tap-macos-x64"
-      sha256 "c0c4d6c0ced3a8f88b28408f856560384d459fcd53b0b16520250247648dca38"
+      url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-macos-x64"
+      sha256 "0b169869b912484deae51327aec4e7a1841d32ac2f394892ffc41432856d4742"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/LeonTing1010/tap/releases/download/v0.18.0/tap-linux-arm64"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-linux-arm64"
+      sha256 "61704fa4de5c5a2ea4379e1c4465ccbee1c30ff1f111dc2752e62d9a0721efee"
     else
-      url "https://github.com/LeonTing1010/tap/releases/download/v0.18.0/tap-linux-x64"
-      sha256 "34a323df0703766e427c32982edeb4965b5693fdd7065a15ddc68a2af2a63453"
+      url "https://github.com/LeonTing1010/tap/releases/download/v0.20.0/tap-linux-x64"
+      sha256 "20636059b6ecf3190fbf59db2320d9903da78dc27c344223b9573f48c8b07dac"
     end
   end
 
