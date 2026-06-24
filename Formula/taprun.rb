@@ -28,7 +28,8 @@ class Taprun < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      odie "Tap does not support Linux ARM yet"
+      url "https://github.com/LeonTing1010/tap/releases/download/v0.18.0/tap-linux-arm64"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
     else
       url "https://github.com/LeonTing1010/tap/releases/download/v0.18.0/tap-linux-x64"
       sha256 "34a323df0703766e427c32982edeb4965b5693fdd7065a15ddc68a2af2a63453"
